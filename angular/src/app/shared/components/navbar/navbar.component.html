@@ -1,0 +1,97 @@
+<nav class="navbar bg-body-tertiary fixed-top pb-0 pt-0">
+  <div class="container-fluid pb-2 pt-2" style="background-color: var(--secondary);">
+
+
+    <!----------------LOGO---------------------------------->
+    <a class="navbar-brand" href="#">
+      <img src="assets/public/images/logos/LOGO_icon.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+        PLEZALNI VODIČ
+    </a>
+
+    <!----------------SEARCH BAR---------------------------------->
+    <form class="d-flex" (ngSubmit)="goToPage()">
+
+      <input class="form-control form-control-sm me-2" type="search" 
+      placeholder="Plezališča, poti, plezalce..." aria-label="Search"
+      [formControl]="$any(searchForm.get('searchInput'))">
+
+      <button class="btn btn-outline-success d-none d-md-block" type="submit">
+        Išči</button>
+    </form>
+
+      <!----------------Toggle down---------------------------------->
+    <button class="navbar-toggler navbar-toggler-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Navigiraj</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+      
+      
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="">Domov</a>
+          </li>
+          <!--
+            profile can be already accessed by clicking on the user name bellow
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/profile">Profil</a>
+          </li> 
+
+          -->
+          
+          <!-- <li class="nav-item">
+            <a class="nav-link active" href="/map">Zemljevid</a>
+          </li> -->
+          <!--
+            We dont need this anymore do we?
+           <li class="nav-item">
+            <a class="nav-link active" routerLink="/plezalisce">Plezalisce</a>
+          </li>
+          -->
+          
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/dogodki">Dogodki</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/oNas">O nas</a>
+          </li>
+        </ul>
+
+        
+
+
+        <!-- Content for users who are not logged in -->
+        <div class="mt-4" *ngIf="!authService.isLoggedIn()">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item mt-2">
+              <button class="btn btn-outline" aria-current="page" routerLink="/login">Vpis</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Content for users who is logged in -->
+        <div class="mt-4" *ngIf="authService.isLoggedIn()">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              Prijavljen kot:
+              <a [routerLink]="['/profile', authService.getUser()?._id]">
+                 {{authService.getUserName()}}
+              </a>
+            </li>
+            <li class="nav-item mt-2">
+              <button class="btn btn-danger" aria-current="page" (click)="logout()">Odjava</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,42 @@
+.nacrt {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Aligns items horizontally */
+    align-items: center;     /* Aligns items vertically */
+}
+
+#naslov{
+    text-align: center;
+    color: black;
+    margin-top: 10%;
+}
+
+.navbar{
+    background-color: white;
+    border-color: black;
+}
+
+
+.content{
+    background-color: rgb(245, 245, 245);
+    border-radius: 20px;
+    border-color: black;
+    border-style: solid;
+    margin: 45px;
+    border: 10px;
+    padding-bottom: 100px;
+    box-shadow: 2px 5px black;
+}
+.accordion-button{
+    background-color: rgb(245, 245, 245);
+}
+
+.background {
+    background-color:rgb(245, 245, 245);
+    min-height: 100vh;
+    max-width: 100%;
+    background-image: url(../images/graphics/Topography_Vector.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}

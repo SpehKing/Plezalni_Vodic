@@ -1,0 +1,42 @@
+<div class="container"><!--Navbar--></div>
+<div class="container foreground_area">
+    <div class="row">
+        <div class="col-md-4 rating_stars">
+            <rating style="font-size: 30px;" [(ngModel)]="area.rating" [max]="5" [readonly]="true"></rating>
+        </div>
+        <div class="col-md-4" style="margin-top: 20px;"><p class="area_name">{{area.name | uppercase}}</p></div>
+        <div class="col-md-4" style="margin-top: 40px; text-align: center;">
+            <a [href]="'https://www.google.com/maps?q=' + area.coordinates" target="_blank">View on Google Maps</a>
+        </div>
+    </div>
+</div>
+<div class="container foreground_area">
+    <carousel [pauseOnFocus]="true">
+        <slide>
+            <img [src]="picturePath + '/' + 1 + '.jpg'" alt="Skica plezalisca" style="display: block; width: 100%;">
+        </slide>
+        <slide>
+            <img [src]="picturePath + '/' + 2 + '.jpg'" alt="Slika plezalisca" style="display: block; width: 100%;">
+        </slide>
+    </carousel>
+</div>
+
+<div class="container foreground_area">
+    <accordion [isAnimated]="true">
+        <accordion-group heading="Opis">
+            <p>{{area.description}}</p>
+        </accordion-group>
+        <accordion-group heading="Najboljši čas">
+            <p>{{area.best_period}}</p>
+        </accordion-group>
+        <accordion-group heading="Karakteristika">
+            <p>{{area.characteristics}}</p>
+        </accordion-group>
+        </accordion>
+</div>
+<div class="container foreground_area">
+    <app-table></app-table>
+</div>
+<div class="container foreground_area">
+    <app-comment [comments]="comments" [areaId]="areaID"></app-comment>
+</div>

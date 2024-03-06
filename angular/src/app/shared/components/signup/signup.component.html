@@ -1,0 +1,76 @@
+<div class="d-flex align-items-center justify-content-center">
+  <div class="container-fluid">
+    <div class="m-md-8 foreground row">
+      <div class="col-md-6 left-box">
+        <img src="../../assets/public/images/logos/LOGO_main.png" class="img-fluid" alt="Logo" />
+      </div>
+      <div class="col-md-6 right-box">
+        <div class="align-items-center">
+          <div>
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+              <div class="header-text mb-4 mt-4">
+                <h3>Nov uporabnik</h3>
+              </div>
+
+              <div class="input-group mb-1">
+                <div class="form-floating">
+                  <input id="name" type="text" formControlName="name" class="form-control form-control-lg bg-light fs-6">
+                  <label for="name">Ime</label>
+                </div>
+              </div>
+              
+              <div class="input-group mb-1">
+                <div class="form-floating">
+                  <input id="surname" type="text" formControlName="surname" class="form-control form-control-lg bg-light fs-6">
+                  <label for="surname">Priimek</label>
+                </div>
+              </div>
+              
+              <div class="input-group mb-1">
+                <div class="form-floating">
+                  <input id="birthday" type="date" formControlName="birthday" class="form-control form-control-lg bg-light fs-6">
+                  <label for="birthday">Datum rojstva</label>
+                </div>
+              </div>
+              
+              <div class="input-group mb-1">
+                <div class="form-floating">
+                  <input id="email" type="email" formControlName="email" class="form-control form-control-lg bg-light fs-6">
+                  <label for="email">Email</label>
+                  <div *ngIf="signupForm.get('email')?.hasError('invalidEmail')" class="text-danger mt-2">
+                    Invalid email address.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="input-group mb-1">
+                <div class="form-floating">
+                  <input id="password" type="password" formControlName="password" class="form-control form-control-lg bg-light fs-6">
+                  <label for="password">Geslo</label>
+                  <div *ngIf="signupForm.get('password')?.hasError('invalidPassword')" class="text-danger mt-2">
+                    Password must contain at least one uppercase letter, one lowercase letter, and one digit, and be at least 6 characters long.
+                  </div>
+                </div>
+              </div>
+
+              <div class="input-group mb-1">
+                <div class="form-floating">
+                  <input id="publicKey" type="publicKey" formControlName="publicKey" class="form-control form-control-lg bg-light fs-6">
+                  <label for="publicKey">Javni ključ od ETH računa (ni obvezno)</label>
+                </div>
+              </div>
+
+              <!-- Add these elements in your HTML to display messages and loading spinner -->
+              <div *ngIf="errorMessage" class="text-danger mt-2">{{ errorMessage }}</div>
+              <div *ngIf="successMessage" class="text-success mt-2">{{ successMessage }}</div>
+              <button id="signup_button" type="submit" class="btn btn-md btn-success" [disabled]="loading">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                {{ loading ? 'Registering...' : 'Register' }}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

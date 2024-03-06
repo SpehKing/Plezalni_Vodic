@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <!-- Close button should come here but it doesnt work-->
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+</div>
+  
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="area" class="form-label mb-1 mt-2">Plezališče</label>
+      <input type="text" id="area" class="form-control form-control-sm" [(ngModel)]="formData.areaName" name="area" readonly>
+    </div>
+    
+    <div class="form-group">
+      <label for="route" class="form-label mb-1 mt-2">Smer</label>
+      <input type="text" id="route" class="form-control form-control-sm" [(ngModel)]="formData.routeName" name="route" readonly>
+    </div>
+  
+    <div class="form-group">
+      <label for="name" class="form-label mb-1 mt-2">Ime vzpona</label>
+      <input type="text" id="name" class="form-control form-control-sm" [(ngModel)]="formData.climbName" name="name">
+    </div>
+      
+    <div class="form-group">
+      <label for="date" class="form-label mb-1 mt-2">Datum</label>
+      <input
+        type="date"
+        id="date"
+        class="form-control form-control-sm"
+        [(ngModel)]="formData.date"
+        name="date"
+      /> 
+    </div>
+  </div>
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="addClimb()">Shrani</button>
+  </div>

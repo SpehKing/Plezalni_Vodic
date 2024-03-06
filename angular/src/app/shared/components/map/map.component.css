@@ -1,0 +1,35 @@
+/* Style for the map container */
+#map {
+    height: 500px; 
+    width: auto;
+    background-color: #1fb035c0;
+  }
+
+/*SECTION LIST*/
+.list{
+    margin: 0;
+}
+
+.title {
+    cursor: pointer;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.info {
+    background-color: #e0e0e0;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    border: 1px solid #ccc; 
+}
+
+:host ::ng-deep .btn {
+    --bs-btn-padding-y: .04rem;
+  }
+
+
+

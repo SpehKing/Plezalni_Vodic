@@ -1,0 +1,50 @@
+<div class="d-flex align-items-center justify-content-center">
+    <div class="container-fluid">
+        <div class="m-md-5 foreground row">
+            <div class="col-md-6 left-box">
+                <img src="../../assets/public/images/logos/LOGO_main.png" class="img-fluid" alt="Logo" />
+            </div>
+            <div class="col-md-6 right-box">
+                <div class="row align-items-center">
+                    <div class="header-text mb-4 mt-5">
+                        <h3 class="">Dobrodošel!</h3>
+                    </div>
+                    <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="LoginEmail" class="form-label ">Email</label>
+                            <input type="email" name="email" id="LoginEmail" placeholder="Vnesite svoj e-poštni naslov" class="form-control form-control-lg bg-light fs-6" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid email address.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="LoginPassword" class="form-label ">Geslo</label>
+                            <input type="password" name="password" id="LoginPassword" placeholder="Vnesite geslo" class="form-control form-control-lg bg-light fs-6" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" required>
+                            <div class="invalid-feedback">
+                                Please enter your password.
+                            </div>
+                        </div>
+                        <div *ngIf="errorMessage" class="text-danger mb-3">{{ errorMessage }}</div>
+                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="formCheck"  [(ngModel)]="rememberMe" [ngModelOptions]="{standalone: true}" >
+                                <label for="formCheck" class="form-check-label"><small>Samodejna prijava</small></label>
+                            </div>
+                            <div class="forgot">
+                                <small><a routerLink="/password-reset" class="">Pozabljeno geslo</a></small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button id="login_button" type="submit" class="btn btn-lg btn-success" [disabled]="isSubmitting">
+                            {{ isSubmitting ? 'Logging in...' : 'Login' }}
+                            </button>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <small>Nimaš računa? <a [routerLink]="['/signup']" class="">Včlanitev</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>	

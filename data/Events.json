@@ -1,0 +1,42 @@
+[
+    {
+      "showInfo": "false",
+      "author": "657f300577ce499e2460eef4",
+      "name": "Test Event 1",
+      "image": "",
+      "description": "This is a test event",
+      "date": "2024-10-10",
+      "area": "656efde45185b7b376efc118",
+      "price": 20,
+      "maxParticipants": 5,
+      "currentNumParticipants": 0,
+      "participants": []
+    },
+    {
+      "showInfo": "false",
+      "author": "657f310577ce499e2460ef1f",
+      "name": "Test Event 2",
+      "image": "656efde45185b7b376efc119",
+      "description": "This is a test event",
+      "date": "2024-10-11",
+      "area": "",
+      "price": 20,
+      "maxParticipants": 5,
+      "currentNumParticipants": 0,
+      "participants": []
+    },
+    {
+      "showInfo": "false",
+      "author": "657f31a177ce499e2460ef22",
+      "name": "Test Event 3",
+      "image": "",
+      "description": "This is a test event",
+      "date": "2024-10-12",
+      "area": "656efde45185b7b376efc11a",
+      "price": 20,
+      "maxParticipants": 5,
+      "currentNumParticipants": 0,
+      "participants": []
+    }
+  ]
+  

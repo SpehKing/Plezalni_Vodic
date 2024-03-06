@@ -1,0 +1,35 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Smer</th>
+                <th>Ime</th>
+                <th>Težavnost</th>
+                <th>Višina</th>
+                <th>Opravljeno</th>
+            </tr>
+        </thead>  
+        <tbody *ngFor="let route of routes_to_display">
+            <tr>
+                <td>{{route.numberOrder}}</td>
+                <td>{{route.name}}</td>
+                <td>{{route.grade}}</td>
+                <td>{{route.height}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="openAddClimbModal(route)">
+                      <i class="bi bi-plus"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody> 
+    </table>
+    <div class="container">
+        <div class="area_pagination_div" *ngIf="numOfRoutes >= 10">
+            <pagination 
+            class="area_pagination"
+            [totalItems]="numOfRoutes" 
+            (pageChanged)="pageChanged($event)">
+            </pagination>
+        </div>
+    </div>
+</div>

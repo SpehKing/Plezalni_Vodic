@@ -1,0 +1,104 @@
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Naziv</th>
+        <th>Plezališče</th>
+        <th>Smer</th>
+        <th>Težavnost</th>
+        <th>Datum</th>
+        <th *ngIf="isCurrentUser()">Izbriši</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="isDataLoaded; else loading">
+      <tr *ngFor="let climb of climbs; trackBy: trackByClimbId">
+        <td>{{ climb.name }}</td>
+        <td><a [routerLink]="['/plezalisce', climb.area]">{{ climb.areaName }}</a></td>
+        <td>{{ climb.numberOrder }}.</td>
+        <td>{{ climb.grade }}</td>
+        <td>{{ climb.date | date: 'dd.MM.yyyy' }}</td>
+        <td *ngIf="isCurrentUser()">
+          <button type="button" class="btn btn-danger btn-sm" (click)="deleteClimb(climb._id)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+<ng-template #loading>Loading...</ng-template>
+  
+<div class="d-grid gap-2" *ngIf="isCurrentUser()">
+  <button type="button" class="btn" (click)="openModal(AddClimbForm)">Nov vzpon   </button>
+</div>
+  
+  <ng-template #AddClimbForm>
+            <div class="modal-header">
+              <button type="button" class="btn-close clsoe pull.right" aria-label="Close" (click)="modalRef?.hide()"></button>
+              <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+            </div>
+
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="name" class="form-label mb-1">Ime vzpona</label>
+                <input
+                  type="text"
+                  id="name"
+                  class="form-control form-control-sm"
+                  placeholder="npr. Jutranje plezanje"
+                  [(ngModel)]="formData.climbName"
+                  name="name"
+                  maxlength="10"
+                />
+              </div>
+              <div class="form-group">
+                <label for="area" class="form-label mb-1 mt-2">Plezališče</label>
+                <select
+                  id="area"
+                  class="form-control form-control-sm"
+                  [(ngModel)]="formData.areaName"
+
+                  name="area"
+                  (change)="loadRoutesForArea()">
+                  <option *ngFor="let climbingArea of climbingAreas" [value]="climbingArea.name">
+                    {{ climbingArea.name }}
+                  </option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="route" class="form-label mb-1 mt-2">Smer</label>
+                <select 
+                class="form-control form-control-sm"
+                *ngIf="routes && routes.length > 0" 
+                [(ngModel)]="formData.routeName"
+                >
+                <option *ngFor="let route of routes" [value]="route.name">
+                  {{ route.name }}</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="date" class="form-label mb-1 mt-2">Datum</label>
+                <input
+                  type="date"
+                  id="date"
+                  class="form-control form-control-sm"
+                  [(ngModel)]="formData.date"
+                  name="date"
+                /> 
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" (click)="addClimb()">Shrani</button>
+            </div>
+    
+  </ng-template>
+  

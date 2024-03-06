@@ -1,0 +1,23 @@
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+    tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+       <div class="modal-dialog modal-lg">
+           <div class="modal-content">
+           <div class="modal-header">
+               <h4 id="dialog-static-name" class="modal-title pull-left">Dodaj komentar in oceni</h4>
+               <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="staticModal.hide()">
+               <span aria-hidden="true" class="visually-hidden">&times;</span>
+               </button>
+           </div>
+           <div class="modal-body">
+                <mat-form-field class="form-full-width">
+                        <textarea matInput [formControl]="commentControl"></textarea>
+                </mat-form-field>
+                <div class="rating_stars">
+                    <rating [(ngModel)]="rating" style="font-size: 30px;"></rating>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn btn-primary" (click)="onSubmit(); staticModal.hide()">Dodaj komentar</button>
+                </div>
+           </div>
+       </div>
+   </div>

@@ -1,0 +1,237 @@
+:root {
+    --text: rgb(25, 27, 24);
+    --background: rgb(247, 248, 247);
+    --primary: rgb(140, 151, 140);
+    --secondary: rgb(204, 201, 207);
+    --secondary-trans: rgb(204, 201, 207, 0.7);
+    --accent: rgb(107, 97, 107);
+  }
+
+html {font-size: 100%;} /* 16px */
+
+h1 {font-size: 4.210rem; /* 67.36px */}
+
+h2 {font-size: 3.158rem; /* 50.56px */}
+
+h3 {font-size: 2.369rem; /* 37.92px */}
+
+h4 {font-size: 1.777rem; /* 28.48px */}
+
+h5 {font-size: 1.333rem; /* 21.28px */}
+
+p {font-size: 1.1rem; /* 12px */}
+
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+/* accent color for all links */
+a {
+  color: var(--accent);
+}
+
+.profile-picture {
+  max-width: 60%;
+  max-height: 60%;
+  padding: 1%;
+}
+
+/*css relating pagination*/
+.area_pagination_div {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+  padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+  position: relative;
+  padding-bottom: 70px; /* Adjust this value to match the height of your footer */
+}
+
+.rating_stars{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.area_name{
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+}
+
+.datum{
+    font-size: small;
+    font-weight: lighter;
+}
+
+/*comment css*/
+.rounded-border {
+  border: 1px solid #ccc; /* Adjust the color and thickness of the border as needed */
+  border-radius: 10px; /* Adjust the radius to control how rounded the corners are */
+  padding: 10px; /* Optional: Adds some spacing inside the border */
+  margin-bottom: 10px; /* Optional: Adds some space between the comment containers */
+}
+
+.plezalisce-img {
+  height: 50vh;
+  width: auto; 
+  align-items: center;
+  background-color: rgb(245, 245, 245);
+  border-radius: 20px;
+  border-color: black;
+  border-style: solid;
+  margin: 10px;
+  border: 10px;    
+  padding: 6px;
+  box-shadow: 2px 5px black;
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.container {
+    margin-top: 0px;
+}
+
+.secondary-color {
+    color: rgb(245, 245, 245);
+}
+
+.background_area{
+    background-color: white;
+    min-height: 100vh;
+    max-width: 100%;
+    /* use this to prevent the background from scrolling with the page */
+    background-image: url(../images/graphics/Topography_Vector.svg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.foreground_area{
+    background-color: rgb(245, 245, 245);
+    border-radius: 20px;
+    border-color: black;
+    border-style: solid;
+    margin: 10px;
+    border: 10px;    
+    padding: 6px;
+    box-shadow: 2px 5px black;
+}
+
+.background {
+    background-color: var(--background);
+    min-height: 100vh;
+    background-image: url(../images/graphics/Topography_Vector.svg);
+    background-size: cover;
+    /* use this to prevent the background from scrolling with the page */
+    background-attachment: fixed;
+    background-repeat: repeat;
+}
+
+.background-plezalisce{
+  background-color: white;
+  min-height: 100vh;
+  max-width: 100%;
+  background-image: url(../images/graphics/Topography_Vector.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* use this to prevent the background from scrolling with the page */
+  background-attachment: fixed;
+}
+
+#background_login {
+    background-color: var(--background);
+    min-height: 100vh;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-image: url(../images/graphics/Topography_Vector.svg);
+    /* use this to prevent the background from scrolling with the page */
+     background-attachment: fixed;
+}
+
+
+.foreground {
+    background-color: var(--secondary) !important;
+    border-radius: 20px;
+    border-color: black;
+    border-style: solid;
+    border: 10px;
+    padding: 6px;
+    box-shadow: 2px 5px black;
+}
+
+.left-box{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;    
+}
+
+#login_button{
+    width: 100%;
+}
+
+/*add coment form*/
+.form-full-width {
+    width: 100%;
+}
+
+  /* Style for the button */
+.btn {
+  color: var(--background) !important;
+  background-color: var(--accent) !important;
+  border: 2px solid var(--accent) !important;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover style for the button */
+.btn:hover {
+  background-color: var(--accent) !important;
+  color: var(--background) !important;
+  border-color: var(--text) !important;
+}
+
+.navbar {
+    background-color: var(--secondary);
+    color: var(--light);
+}
+
+footer {
+  background-color: var(--secondary-trans);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+password-reset {
+  max-width: 100px;
+}
+
+/* main_page thingy next to the map */
+.list-container {
+  background-color: var(--secondary);
+  border-radius: 20px;
+  border-color: black;
+  border-style: solid;
+  border: 10px;
+  box-shadow: 2px 5px black;
+}
+
+.modal-footer .btn.btn-danger {
+  background-color: #dc3545 !important; /* This is the standard Bootstrap danger color */
+  border-color: #dc3545 !important;
+  color: #fff !important; /* White text */
+}

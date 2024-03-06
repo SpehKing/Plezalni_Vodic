@@ -1,0 +1,154 @@
+<div class="my-3 text-center">
+  <button class="btn btn-lg btn-primary" *ngIf="authService.isGuide()" (click)="openModal(commentForm)">
+    <i class="fas fa-plus"></i> Dodaj dogodek
+  </button>
+</div>
+<div  *ngFor="let groupEvent of groupEvents | showClosestDateFirst" (click)="goToSingleEvent(groupEvent._id)" >
+  <div class="container my-4">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="card shadow-lg">
+          <div class="card-header bg-light">
+            <h3 class="mb-0">{{ groupEvent.name }}, {{ groupEvent.area }}</h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <img [src]="groupEvent.image" class="img-fluid rounded" alt="Event Image" />
+              </div>
+              <div class="col-md-6">
+                <p class="mb-3"><strong>Opis:</strong></p>
+                <p>{{ groupEvent.description }}</p>
+                <p class="mb-1"><strong>Autor:</strong> {{ groupEvent.author }}</p>
+                <p class="mb-1"><strong>Cena:</strong> {{ groupEvent.price | addEur}}</p>
+                <p><strong>Datum:</strong> {{ groupEvent.date | dateFormatEvent }}</p>
+                <div>
+                  <p><strong>Zasedenost:</strong> {{ groupEvent.currentNumParticipants || 0 }}/{{ groupEvent.maxParticipants }}</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div class="mb-4">
+                      <p><strong>{{ groupEvent.participants! | pluralParticipant: 'Udeleženec': 'Udeleženci' }}</strong></p>
+                    <!-- <p><strong>Udeleženci:</strong></p> -->
+                    <ul class="list-unstyled">
+                      <li *ngFor="let participant of groupEvent?.participants">{{ participant }}</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <button class="btn btn-primary">Več</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+<!-- modal -->
+<ng-template #commentForm>
+  <div class="p-3">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Dodaj dogodek</h4>
+      <button
+        type="button"
+        class="btn-close close pull-right"
+        aria-label="Close"
+        (click)="modalRef?.hide()"
+      >
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="imeDogodka">Ime dogodka</label>
+        </div>
+        <input
+          type="text"
+          id="imeDogodka"
+          class="form-control form-control-sm"
+          placeholder="Vnesi ime dogodka"
+          [(ngModel)]="createNewEvent.name"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend w-100">
+          <label class="input-group-text" for="opis">Opis</label>
+        </div>
+        <textarea
+          id="opis"
+          rows="3"
+          class="form-control form-control-sm"
+          placeholder="Vnesite opis"
+          [(ngModel)]="createNewEvent.description"
+          ></textarea>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="cena">cena</label>
+        </div>
+        <input
+          type="number"
+          id="cena"
+          class="form-control form-control-sm"
+          placeholder="Vnesite ceno"
+          [(ngModel)]="createNewEvent.price"
+          pattern="[0-9]+(\.[0-9]{1,2})?"
+        />
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="cena">* 0.01 eth</label>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="maxUsers">limit</label>
+        </div>
+        <input
+          type="number"
+          id="maxUsers"
+          class="form-control form-control-sm"
+          placeholder="Vnesite maximalno število udeležencev"
+          [(ngModel)]="createNewEvent.maxParticipants"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Izberi plezališče:</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="createNewEvent.areaName">
+          <option selected></option>
+          <option  *ngFor="let area of climbingAreas; let i = index" [value]="area.name" > {{area.name}}</option>
+          
+        </select>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="datumDogotka">Datum dogodka</label>
+        </div>
+        <input
+          placeholder="{{currenDate | dateFormatEvent}}"
+          type="date"
+          id="datumDogotka"
+          class="form-control form-control-sm"
+          [(ngModel)]="createNewEvent.datum"
+          pattern="\d{4}-\d{2}-\d{2}"
+        />
+      </div>
+      
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-sm btn-secondary"
+        (click)="modalRef?.hide()"
+      >Cancel</button>
+      <button type="button" class="btn btn-sm btn-primary"
+      (click)="createEvent()"
+      >Save</button>
+    </div>
+  </div>
+</ng-template>
+
+  

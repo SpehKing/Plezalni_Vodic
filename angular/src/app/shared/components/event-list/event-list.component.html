@@ -1,0 +1,19 @@
+<div *ngFor="let event of groupEvents" class="event-container">
+  <ngb-accordion #acc="ngbAccordion">
+    <ngb-panel>
+      <ng-template ngbPanelTitle>
+        
+        <h2 class="title" (click)="toggleInfo(event)">{{ event?.name }},   {{ event?.area }}</h2>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <p class="description">{{ event.description }}.
+          <br>
+          <b>{{event.author}}</b>
+        </p>
+        <button class="btn btn-success" (click)="handleButtonClick(event._id)">Več</button>
+
+      </ng-template>
+    </ngb-panel>
+
+  </ngb-accordion>
+</div>

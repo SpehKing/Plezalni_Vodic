@@ -1,0 +1,55 @@
+<div *ngIf="groupEvent" class="container my-4">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card shadow-lg">
+        <img [src]="groupEvent.image" class="card-img-top rounded-top" alt="Event Image" routerLink="/plezalisce/{{groupEvent.area}}" />
+        <div class="card-body">
+          <div class="card-header bg-light" routerLink="/plezalisce/{{groupEvent.area}}" >
+            <h3 class="mb-0">{{ groupEvent.name }}, {{ areaName }}</h3>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <p class="mb-3"><strong>Opis:</strong></p>
+              <p>{{ groupEvent.description }}</p>
+              <p class="mb-1" routerLink="/profile/{{groupEvent.author}}"><strong>Autor:</strong> {{ authorOfEvent }}</p>
+              <p class="mb-1"><strong>Email:</strong> {{authorEmail}}</p>
+              <p class="mb-1"><strong>Cena:</strong> {{ groupEvent.price | addEur}}</p>
+              <p><strong>Datum:</strong> {{ groupEvent.date | dateFormatEvent }}</p>
+            </div>
+            <div class="col-md-6">
+              <p><strong>Zasedenost:</strong> {{ groupEvent.currentNumParticipants || 0 }}/{{ groupEvent.maxParticipants }}</p>
+              <!-- <div *ngIf="checkIfUserIsAuthor()">
+                <p>funds: {{getEventFunds(groupEvent._id)}}</p>
+              </div> -->
+              <div *ngIf="groupEvent.participants">
+                <p><strong>{{ groupEvent.participants | pluralParticipant: 'Udeleženec': 'Udeleženci' }}</strong></p>
+              <div>
+              <ul class="list-unstyled">
+                <li *ngFor="let participant of participantNames; let i = index" routerLink="/profile/{{participantIds[i]}}">{{ participant }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-center align-items-center">
+          <div *ngIf="!checkIfUserIsAuthor()">
+            <div *ngIf="!isUserApplied(groupEvent)">
+              <button class="btn btn-primary" (click)="toggleApply()">Prijavi se</button>
+            </div>
+            
+            <div *ngIf="isUserApplied(groupEvent)" class="text-success">
+              <p>Vstopnico ste že kupili</p>
+            </div>
+          </div>
+        
+          <div *ngIf="checkIfUserIsAuthor()" class="d-flex align-items-center">
+            <!-- if the event passed allow delete -->
+            <div *ngIf="isEventDatePassed(groupEvent.date)" class="d-flex align-items-center">
+              <button class="btn btn-danger ml-2" *ngIf="authService.isGuide()" (click)="deleteEvent()">Izbriši</button>
+            </div>
+            <button class="btn btn-danger ml-2" (click)="withdrawFunds()">Dvig sredstev</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

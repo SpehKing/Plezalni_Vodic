@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+}
+
+.map-container {
+  width: 70%;
+  padding: 20px; /* Adjust the padding as needed */
+}
+
+.list-container {
+  width: 30%;
+  padding: 20px; /* Adjust the padding as needed */
+}
+.event-list-container {
+  padding: 18px; /* Adjust the padding as needed */
+}
+
+
+/* Media query for tablets (adjust the max-width as needed) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .map-container,
+  .list-container {
+    width: 100%;
+  }
+}
